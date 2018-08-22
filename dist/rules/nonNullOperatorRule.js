@@ -1,0 +1,33 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const Lint = require("tslint");
+class Rule extends Lint.Rules.AbstractRule {
+    apply(sourceFile) {
+        return this.applyWithWalker(new Walker(sourceFile, this.getOptions()));
+    }
+}
+Rule.metadata = {
+    ruleName: 'non-null-operator',
+    type: 'typescript',
+    description: `Ensure the NonNull operator (!) can be used or not.`,
+    rationale: 'strictNullChecks are meant to avoid issues, which the non-null operator removes '
+        + 'if used too frequently. Please use the non-null operator responsibly.',
+    options: null,
+    optionsDescription: `Not configurable.`,
+    typescriptOnly: false,
+};
+Rule.FAILURE_STRING = 'The Non-Null operator `!` is illegal.';
+exports.Rule = Rule;
+class Walker extends Lint.RuleWalker {
+    visitNonNullExpression(node) {
+        this.addFailureAt(node.getStart(), node.getWidth(), Rule.FAILURE_STRING);
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibm9uTnVsbE9wZXJhdG9yUnVsZS5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvZXJuaWVkYXZpcy9Db2RlL2FuZ3VsYXItY2xpLyIsInNvdXJjZXMiOlsicnVsZXMvbm9uTnVsbE9wZXJhdG9yUnVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7R0FNRztBQUNILCtCQUErQjtBQUkvQixVQUFrQixTQUFRLElBQUksQ0FBQyxLQUFLLENBQUMsWUFBWTtJQWN4QyxLQUFLLENBQUMsVUFBeUI7UUFDcEMsT0FBTyxJQUFJLENBQUMsZUFBZSxDQUFDLElBQUksTUFBTSxDQUFDLFVBQVUsRUFBRSxJQUFJLENBQUMsVUFBVSxFQUFFLENBQUMsQ0FBQyxDQUFDO0lBQ3pFLENBQUM7O0FBZmEsYUFBUSxHQUF1QjtJQUMzQyxRQUFRLEVBQUUsbUJBQW1CO0lBQzdCLElBQUksRUFBRSxZQUFZO0lBQ2xCLFdBQVcsRUFBRSxxREFBcUQ7SUFDbEUsU0FBUyxFQUFFLGtGQUFrRjtVQUNsRix1RUFBdUU7SUFDbEYsT0FBTyxFQUFFLElBQUk7SUFDYixrQkFBa0IsRUFBRSxtQkFBbUI7SUFDdkMsY0FBYyxFQUFFLEtBQUs7Q0FDdEIsQ0FBQztBQUVZLG1CQUFjLEdBQUcsdUNBQXVDLENBQUM7QUFaekUsb0JBaUJDO0FBR0QsWUFBYSxTQUFRLElBQUksQ0FBQyxVQUFVO0lBQ2xDLHNCQUFzQixDQUFDLElBQTBCO1FBQy9DLElBQUksQ0FBQyxZQUFZLENBQUMsSUFBSSxDQUFDLFFBQVEsRUFBRSxFQUFFLElBQUksQ0FBQyxRQUFRLEVBQUUsRUFBRSxJQUFJLENBQUMsY0FBYyxDQUFDLENBQUM7SUFDM0UsQ0FBQztDQUNGIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBAbGljZW5zZVxuICogQ29weXJpZ2h0IEdvb2dsZSBJbmMuIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4gKlxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcbiAqIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgYXQgaHR0cHM6Ly9hbmd1bGFyLmlvL2xpY2Vuc2VcbiAqL1xuaW1wb3J0ICogYXMgTGludCBmcm9tICd0c2xpbnQnO1xuaW1wb3J0ICogYXMgdHMgZnJvbSAndHlwZXNjcmlwdCc7XG5cblxuZXhwb3J0IGNsYXNzIFJ1bGUgZXh0ZW5kcyBMaW50LlJ1bGVzLkFic3RyYWN0UnVsZSB7XG4gIHB1YmxpYyBzdGF0aWMgbWV0YWRhdGE6IExpbnQuSVJ1bGVNZXRhZGF0YSA9IHtcbiAgICBydWxlTmFtZTogJ25vbi1udWxsLW9wZXJhdG9yJyxcbiAgICB0eXBlOiAndHlwZXNjcmlwdCcsXG4gICAgZGVzY3JpcHRpb246IGBFbnN1cmUgdGhlIE5vbk51bGwgb3BlcmF0b3IgKCEpIGNhbiBiZSB1c2VkIG9yIG5vdC5gLFxuICAgIHJhdGlvbmFsZTogJ3N0cmljdE51bGxDaGVja3MgYXJlIG1lYW50IHRvIGF2b2lkIGlzc3Vlcywgd2hpY2ggdGhlIG5vbi1udWxsIG9wZXJhdG9yIHJlbW92ZXMgJ1xuICAgICAgICAgICAgICsgJ2lmIHVzZWQgdG9vIGZyZXF1ZW50bHkuIFBsZWFzZSB1c2UgdGhlIG5vbi1udWxsIG9wZXJhdG9yIHJlc3BvbnNpYmx5LicsXG4gICAgb3B0aW9uczogbnVsbCxcbiAgICBvcHRpb25zRGVzY3JpcHRpb246IGBOb3QgY29uZmlndXJhYmxlLmAsXG4gICAgdHlwZXNjcmlwdE9ubHk6IGZhbHNlLFxuICB9O1xuXG4gIHB1YmxpYyBzdGF0aWMgRkFJTFVSRV9TVFJJTkcgPSAnVGhlIE5vbi1OdWxsIG9wZXJhdG9yIGAhYCBpcyBpbGxlZ2FsLic7XG5cbiAgcHVibGljIGFwcGx5KHNvdXJjZUZpbGU6IHRzLlNvdXJjZUZpbGUpOiBMaW50LlJ1bGVGYWlsdXJlW10ge1xuICAgIHJldHVybiB0aGlzLmFwcGx5V2l0aFdhbGtlcihuZXcgV2Fsa2VyKHNvdXJjZUZpbGUsIHRoaXMuZ2V0T3B0aW9ucygpKSk7XG4gIH1cbn1cblxuXG5jbGFzcyBXYWxrZXIgZXh0ZW5kcyBMaW50LlJ1bGVXYWxrZXIge1xuICB2aXNpdE5vbk51bGxFeHByZXNzaW9uKG5vZGU6IHRzLk5vbk51bGxFeHByZXNzaW9uKTogdm9pZCB7XG4gICAgdGhpcy5hZGRGYWlsdXJlQXQobm9kZS5nZXRTdGFydCgpLCBub2RlLmdldFdpZHRoKCksIFJ1bGUuRkFJTFVSRV9TVFJJTkcpO1xuICB9XG59XG4iXX0=

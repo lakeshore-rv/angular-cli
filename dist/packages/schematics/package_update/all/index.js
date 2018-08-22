@@ -1,0 +1,19 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const schematics_1 = require("@angular-devkit/schematics");
+function default_1(options) {
+    return (_tree, context) => {
+        return schematics_1.chain(context.schematic.collection.listSchematicNames()
+            .filter(name => name != context.schematic.description.name)
+            .map(name => schematics_1.schematic(name, options)));
+    };
+}
+exports.default = default_1;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2VybmllZGF2aXMvQ29kZS9hbmd1bGFyLWNsaS8iLCJzb3VyY2VzIjpbInBhY2thZ2VzL3NjaGVtYXRpY3MvcGFja2FnZV91cGRhdGUvYWxsL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7Ozs7OztHQU1HO0FBQ0gsMkRBQTRGO0FBSTVGLG1CQUF3QixPQUErQjtJQUNyRCxPQUFPLENBQUMsS0FBVyxFQUFFLE9BQXlCLEVBQUUsRUFBRTtRQUNoRCxPQUFPLGtCQUFLLENBQ1YsT0FBTyxDQUFDLFNBQVMsQ0FBQyxVQUFVLENBQUMsa0JBQWtCLEVBQUU7YUFDOUMsTUFBTSxDQUFDLElBQUksQ0FBQyxFQUFFLENBQUMsSUFBSSxJQUFJLE9BQU8sQ0FBQyxTQUFTLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQzthQUMxRCxHQUFHLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxzQkFBUyxDQUFDLElBQUksRUFBRSxPQUFPLENBQUMsQ0FBQyxDQUN6QyxDQUFDO0lBQ0osQ0FBQyxDQUFDO0FBQ0osQ0FBQztBQVJELDRCQVFDIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBAbGljZW5zZVxuICogQ29weXJpZ2h0IEdvb2dsZSBJbmMuIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4gKlxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcbiAqIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgYXQgaHR0cHM6Ly9hbmd1bGFyLmlvL2xpY2Vuc2VcbiAqL1xuaW1wb3J0IHsgUnVsZSwgU2NoZW1hdGljQ29udGV4dCwgVHJlZSwgY2hhaW4sIHNjaGVtYXRpYyB9IGZyb20gJ0Bhbmd1bGFyLWRldmtpdC9zY2hlbWF0aWNzJztcbmltcG9ydCB7IFNjaGVtYXRpY3NVcGRhdGVTY2hlbWEgfSBmcm9tICcuLi9zY2hlbWEnO1xuXG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uKG9wdGlvbnM6IFNjaGVtYXRpY3NVcGRhdGVTY2hlbWEpOiBSdWxlIHtcbiAgcmV0dXJuIChfdHJlZTogVHJlZSwgY29udGV4dDogU2NoZW1hdGljQ29udGV4dCkgPT4ge1xuICAgIHJldHVybiBjaGFpbihcbiAgICAgIGNvbnRleHQuc2NoZW1hdGljLmNvbGxlY3Rpb24ubGlzdFNjaGVtYXRpY05hbWVzKClcbiAgICAgICAgLmZpbHRlcihuYW1lID0+IG5hbWUgIT0gY29udGV4dC5zY2hlbWF0aWMuZGVzY3JpcHRpb24ubmFtZSlcbiAgICAgICAgLm1hcChuYW1lID0+IHNjaGVtYXRpYyhuYW1lLCBvcHRpb25zKSksXG4gICAgKTtcbiAgfTtcbn1cbiJdfQ==
